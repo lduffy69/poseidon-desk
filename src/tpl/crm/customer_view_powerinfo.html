@@ -1,0 +1,69 @@
+<div class="panel panel-default panel-portlet">
+    <div class="panel-portlet-tool">
+        <ul class="nav dropdown" dropdown>
+            <li class="nav-item inline" ng-if="demand">
+                <a href class="dropdown-toggle" dropdown-toggle>
+                    <i class="icon-list"></i>
+                </a>
+            </li>
+            <li class="nav-item inline" ng-if="!demand">
+                <a demand-create item="demand"><i class="icon-plus"></i></a>
+            </li>
+            <ul class="dropdown-menu dropdown-menu-right animated fadeInDown w">
+                <li>
+                    <a demand-create item="demand">新增</a>
+                </li>
+                <li ng-if="demand">
+                    <a demand-create edit-mode="true" item="demand">编辑</a>
+                </li>
+                <li class="divider" ng-if="demand"></li>
+                <li ng-if="demand">
+                    <a demand-delete item="demand">删除</a>
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <div class="panel-heading">
+        企业用电信息
+        <!--<span ng-if="demands.length>0">-->
+        <!--<a demand-delete item="demand"><i class="fa fa-times pull-right"></i></a>-->
+        <!--<a demand-create edit-mode="true" item="demand"><i class="fa fa-edit pull-right"></i></a>-->
+        <!--</span>-->
+        <!--<a class="text-info-dk h4" demand-create item="item" ng-if="demands.length==0"><i-->
+        <!--class="fa fa-plus-circle pull-right"></i></a>-->
+    </div>
+    <div class="list-group no-radius alt" ng-if="demands.length>0">
+        <a class="list-group-item" href=""> <span class="badge bg-light">{{demand.consNo}}</span>
+            <i class="fa fa-mobile fa-fw text-muted"></i> 供电户号
+        </a> <a class="list-group-item" href=""> <span class="badge bg-light">{{demand.powerOrgName}}</span>
+        <i class="fa fa-mobile fa-fw text-muted"></i> 供电单位
+    </a> <a class="list-group-item text-center" href=""> 年度负荷 </a>
+        <div class="hbox text-center b-t b-success">
+            <div class="col padder-v text-muted">
+                <div class="h3 text-danger">
+                    <span ng-bind="demand.maxLoad"></span>
+                </div>
+                <span>最大</span>
+            </div>
+            <div class="col padder-v text-muted">
+                <div class="h3 text-warning">
+                    <span ng-bind="demand.averLoad"></span>
+                </div>
+                <span>平均</span>
+            </div>
+            <div class="col padder-v text-muted">
+                <div class="h3 text-success">
+                    <span ng-bind="demand.minLoad"></span></div>
+                <span>最小</span>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer" ng-if="demands.length>0">
+        <div class="m-b m-t-lg">
+            <a ng-repeat="demand in demands"
+               ng-click="view(demand)" class="avatar thumb-xs m-r-xs"
+               href=""> <img src="img/a1.jpg">
+            </a>
+        </div>
+    </div>
+</div>

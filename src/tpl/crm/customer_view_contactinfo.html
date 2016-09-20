@@ -1,0 +1,77 @@
+<div class="panel panel-default panel-portlet">
+    <div class="panel-portlet-tool">
+        <ul class="nav dropdown" dropdown>
+            <li class="nav-item inline" ng-if="contact">
+                <a href class="dropdown-toggle nav-link" dropdown-toggle>
+                    <i class="icon-list"></i>
+                </a>
+            </li>
+            <li class="nav-item inline" ng-if="!contact">
+                <a contact-create item="contact"><i class="icon-plus"></i></a>
+            </li>
+            <ul class="dropdown-menu dropdown-menu-right animated fadeInDown w">
+                <li>
+                    <a contact-create item="contact">新增</a>
+                </li>
+                <li>
+                    <a contact-create edit-mode="true" item="contact">编辑</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a contact-delete item="contact">删除</a>
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <div class="panel-heading">
+        企业联系人信息
+        <!--<span ng-if="contacts.length>0">-->
+        <!--<a contact-delete item="contact"><i class="fa fa-times pull-right"></i></a>-->
+        <!--<a contact-create edit-mode="true" item="contact"><i class="fa fa-edit pull-right"></i></a>-->
+        <!--</span>-->
+        <!--<a class="text-info-dk h4" contact-create item="item" ng-if="contacts.length==0"><i class="fa fa-plus-circle pull-right"></i></a>-->
+    </div>
+    <div class="list-group no-radius alt" ng-if="contacts.length>0">
+        <div class="list-group-item clearfix">
+            <div class="clear">
+                <div class="h3 m-t-xs m-b-xs">
+                    {{contact.contName}}
+                </div>
+                <small class="text-muted">{{contact.contAddr}}</small>
+            </div>
+        </div>
+        <a class="list-group-item" href=""> <span class="badge bg-light">{{contact.mobile}}</span>
+            <i class="fa fa-mobile fa-fw text-muted"></i> Mobile
+        </a> <a class="list-group-item" href=""> <span class="badge bg-light">{{contact.officeTel}}</span>
+        <i class="fa fa-phone fa-fw text-muted"></i> Office
+    </a><a class="list-group-item" href="" ng-show="contact.show"> <span
+            class="badge bg-light">{{contact.faxNo}}</span> <i
+            class="fa  fa-fax fa-fw text-muted"></i> FaxNO
+    </a> <a class="list-group-item" href="" ng-show="contact.show"> <span
+            class="badge bg-light">{{contact.postCode}}</span> <i
+            class="fa fa-institution fa-fw text-muted"></i> Post
+    </a> <a class="list-group-item" href=""> <span class="badge bg-light">{{contact.email}}</span>
+        <i class="fa fa-envelope fa-fw text-muted"></i> Email
+    </a> <a class="list-group-item" href="" ng-show="contact.show"> <span
+            class="badge bg-light">{{contact.webchart}}</span> <i
+            class="fa fa-comments fa-fw text-muted"></i> WeiChart
+    </a> <a class="list-group-item" href="" ng-show="contact.show"> <span
+            class="badge bg-light">{{contact.qq}}</span> <i
+            class="fa fa-qq fa-fw text-muted"></i> QQ
+    </a>
+        <button class="btn btn-default btn-sm pull-right" type="button"
+                ng-click="contact.show=!contact.show">
+            <i class="fa fa-fw  pull-right"
+               ng-class="{'fa-angle-double-down':!contact.show,'fa-angle-double-up':contact.show}"></i>
+        </button>
+
+    </div>
+    <div class="panel-footer" ng-if="contacts.length>0">
+        <div class="m-b m-t-lg">
+            <a ng-repeat="contact in contacts" ng-class="{'hover': contact }"
+               ng-click="view(contact)" class="avatar thumb-xs m-r-xs"
+               href=""> <img src="img/a1.jpg">
+            </a>
+        </div>
+    </div>
+</div>

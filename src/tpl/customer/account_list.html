@@ -1,0 +1,52 @@
+<div class="tl-wrap" ng-init="show_account=false;" ng-class="{'b-success':accounts.length>0}" >
+    <div class="tl-date">
+        <a ng-click="show_account=!show_account">账户信息</a>
+    </div>
+    <div>
+        <div class="tl-content panel padder b-a block animated" ng-class="{'fadeInDown':show_account,'fadeOutUp':!show_account}">
+            <span class="arrow left pull-up hidden-left"></span>
+            <span class="arrow right pull-up visible-left"></span>
+            <div class="panel-heading" >
+                <h5 class="panel-title">维护企业银行账户信息</h5>
+            </div>
+            <div class="panel-body pull-in b-t b-light" >
+                <div class="hbox hbox-auto-xs hbox-auto-sm">
+                    <div class="col">
+                        <div class="wrapper-md">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="list-group list-group-lg list-group-sp">
+                                        <a herf class="list-group-item clearfix" ng-repeat="account in accounts">
+                                              <span class="pull-left thumb-sm avatar m-r">
+                                                <img src="img/a4.jpg" alt="...">
+                                                <i class="on b-white right"></i>
+                                              </span>
+                                            <span class="clear">
+                                            <span ng-bind="account.accountNo"></span>
+                                                 <span class="pull-right">
+                                                     <button ng-click="edit(account.accountId)"
+                                                             class="btn btn-rounded btn-sm btn-icon btn-default"><i
+                                                             class="fa fa-edit text-info"></i></button>
+                                                     <button ng-click="delete(account.accountId)"
+                                                             class="btn btn-rounded btn-sm btn-icon btn-default"><i
+                                                             class="fa fa-minus text-danger"></i></button>
+                                                 </span>
+                                            <small class="text-muted clear text-ellipsis">开户银行:{{account.bankName}}</small>
+
+                                          </span>
+
+                                        </a>
+                                    </div>
+                                    <button class="btn btn-info btn-addon btn-sm pull-right"
+                                            ng-click="add()"><i
+                                            class="fa fa-plus"></i>添加账户
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

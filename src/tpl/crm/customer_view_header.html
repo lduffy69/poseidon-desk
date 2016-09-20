@@ -1,0 +1,40 @@
+<div class="col-md-6">
+    <div class="hbox h-auto m-b-lg">
+        <div class="col text-center w-sm">
+            <div class="thumb-lg avatar inline">
+                <img ng-src="{{item.avatar}}" ng-show="item.avatar">
+                <img src="img/a2.jpg" ng-show="!item.avatar">
+            </div>
+        </div>
+        <div class="col v-middle h3 font-thin">
+            <div><span ng-bind="cust.custName"></span></div>
+            <!--<div>-->
+            <!--<input type="text" placeholder="custName"-->
+            <!--class="form-control w-auto input-lg m-b-n-xxs font-bold"-->
+            <!--ng-model="customer.custName">-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="row row-sm text-center">
+        <div class="col-xs-6">
+            <a class="block panel padder-v bg-success  item" href=""> <span
+                    class="text-white font-thin h3 block">长协</span> <span
+                    class="text-muted text-xs">到期日2016年12月</span> <span
+                    class="bottom text-right w-full"> <i
+                    class="fa fa-cloud-upload text-muted m-r-sm"></i>
+				</span>
+            </a>
+        </div>
+        <div class="col-xs-6">
+            <a class="block panel padder-v bg-success item" href=""> <span
+                    class="text-white font-thin h3 block">竞价</span> <span
+                    class="text-muted text-xs">到期日2016年12月</span> <span
+                    class="bottom text-right w-full"> <i
+                    class="fa fa-cloud-upload text-muted m-r-sm"></i>
+				</span>
+            </a>
+        </div>
+    </div>
+</div>

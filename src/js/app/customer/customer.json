@@ -1,0 +1,26 @@
+{
+  "successful": true,
+  "resultValue": {
+    "items": [
+      {
+        "taxNo": "123456",
+        "custId": 1,
+        "registeredAddr": "浙江省杭州市",
+        "enterpriseName": "AAA股份有限公司",
+        "legalPerson": "许长老",
+        "custNo": "1472539872995",
+        "concatAddr": "文三路东部软件园",
+        "channelId": 0,
+        "endBusiTime": "2016-08-24",
+        "escNo": "42102",
+        "custName": "张三",
+        "manageId": 1,
+        "custStatus": "1",
+        "custType": "1"
+      }
+    ],
+    "itemCount": 0,
+    "dicts": []
+  },
+  "resultHint": ""
+}

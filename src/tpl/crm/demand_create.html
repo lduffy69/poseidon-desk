@@ -1,0 +1,63 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" data-ng-click="close(false)"
+            aria-hidden="true">&times;</button>
+    <h5 class="modal-title" ng-bind="dlgTitle"></h5></div>
+</div>
+<div class="modal-body b-t b-light">
+    <form name="form" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span class="text-danger">*</span>配网用户户号</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="配网用户户号" name="consNo"
+                       ng-model="demand.consNo">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label"><span class="text-danger">*</span>供电公司</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="供电公司" name="powerOrgName"
+                       ng-model="demand.powerOrgName">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label"><span class="text-danger">*</span>供电公司单位代码</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="供电公司单位代码" name="powerOrgNo"
+                       ng-model="demand.powerOrgNo">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">最大负荷</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="最大负荷" name="maxLoad"
+                       ng-model="demand.maxLoad">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">最小负荷</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="最小负荷" name="minLoad"
+                       ng-model="demand.minLoad">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">平均负荷</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="平均负荷" name="averLoad"
+                       ng-model="demand.averLoad">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-info" ng-disabled="form.$invalid" ng-click="doAction()">确定
+    </button>
+    <button class="btn btn-default" data-ng-click="close(false)">取消</button>
+</div>

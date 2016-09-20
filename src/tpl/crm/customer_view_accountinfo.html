@@ -1,0 +1,68 @@
+<div class="panel panel-default panel-portlet">
+    <div class="panel-portlet-tool">
+        <ul class="nav dropdown" dropdown>
+            <li class="nav-item inline" ng-if="account">
+                <a href class="dropdown-toggle" dropdown-toggle>
+                    <i class="icon-list"></i>
+                </a>
+            </li>
+            <li class="nav-item inline" ng-if="!account">
+                <a account-create item="account"><i class="icon-plus"></i></a>
+            </li>
+            <ul class="dropdown-menu dropdown-menu-right animated fadeInDown w">
+                <li>
+                    <a account-create item="account">新增</a>
+                </li>
+                <li ng-if="account">
+                    <a account-create edit-mode="true" item="account">编辑</a>
+                </li>
+                <li class="divider" ng-if="account"></li>
+                <li ng-if="account">
+                    <a account-delete item="account">删除</a>
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <div class="panel-heading">
+        企业银行账户信息
+        <!--<span ng-if="accounts.length>0">-->
+        <!--<a account-delete item="account"><i class="fa fa-times pull-right"></i></a>-->
+        <!--<a account-create edit-mode="true" item="account"><i class="fa fa-edit pull-right"></i></a>-->
+        <!--</span>-->
+        <!--<a class="text-info-dk h4" account-create item="item" ng-if="accounts.length==0"><i class="fa fa-plus-circle pull-right"></i></a>-->
+    </div>
+    <div class="list-group no-radius alt" ng-if="accounts.length>0">
+        <div class="list-group-item clearfix">
+            <div class="clear">
+                <div class="h3 m-t-xs m-b-xs">
+                    {{account.accountName}}
+                </div>
+                <small class="text-muted">{{account.bankName}}</small>
+            </div>
+        </div>
+        <a class="list-group-item" href="">
+            <span class="badge bg-light" ng-bind="account.accountNo"></span>
+            <i class="fa fa-credit-card fa-fw text-muted"></i>银行卡号
+        </a>
+        <a class="list-group-item" href="">
+            <i class="fa fa-compass fa-fw text-muted"></i>注册地址
+            <span class="badge bg-light" ng-bind="account.registeredAddr"></span>
+        </a>
+        <a class="list-group-item" href="">
+            <span class="badge bg-light" ng-bind="account.taxNo"></span>
+            <i class="fa fa-compass fa-fw text-muted"></i>客户税号
+        </a>
+        <a class="list-group-item" href="">
+            <span class="badge bg-light" ng-bind="account.concatTel"></span>
+            <i class="fa fa-mobile fa-fw text-muted"></i>联系电话
+        </a>
+    </div>
+    <div class="panel-footer" ng-if="accounts.length>0">
+        <div class="m-b m-t-lg">
+            <a ng-repeat="account in accounts"
+               ng-click="view(account)" class="avatar thumb-xs m-r-xs"
+               href=""> <img src="img/a1.jpg">
+            </a>
+        </div>
+    </div>
+</div>

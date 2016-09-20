@@ -1,0 +1,71 @@
+<div class="modal-header">
+    <button type="button" style="font-size: 28px;
+margin-top: -8px;
+float:right;
+font-weight: normal;
+padding: 0;
+cursor: pointer;
+background: transparent;
+border: 0;
+-webkit-appearance: none;" ng-click="close()">×
+    </button>
+    <h5 class="modal-title"><span ng-bind="modal.title"></span>企业联系人信息</h5>
+</div>
+<div class="modal-body b-t b-light">
+    <form name="form" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-md-4 control-label">联系人</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="联系人" name="contName" ng-model="contact.contName">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">联系类型</label>
+            <div class="col-md-6">
+                <select name="contType" ng-model="contact.contType" class="form-control m-b"
+                        ng-options="option.codeValue as option.codeName for option in contTypeOptions">
+                    <option value="">-- 请选择 --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">办公电话</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="办公电话" name="contact.officeTel"
+                       ng-model="contact.officeTel">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">移动电话</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="移动电话" name="contact.mobile"
+                       ng-model="contact.mobile">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">传真号码</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="传真号码" name="contact.faxNo"
+                       ng-model="contact.faxNo">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">联系地址</label>
+            <div class="col-md-6">
+                                            <textarea class="form-control" rows="3"
+                                                      placeholder="" name="contAddr"
+                                                      ng-model="contact.contAddr"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-disabled="form.$invalid" ng-click="save()"
+            disabled="disabled">确定
+    </button>
+    <button class="btn btn-default" data-ng-click="cancel()">取消</button>
+</div>

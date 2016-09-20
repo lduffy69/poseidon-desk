@@ -1,0 +1,19 @@
+<div bindonce class="console-message-dialog">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" data-ng-click="close(false)"
+                aria-hidden="true">&times;</button>
+        <h5 class="modal-title">{{dlgTitle }}</h5></div>
+    <div class="modal-body clearfix">
+        <div class="pull-left col-padding"><span class="text-size-32 icon-help-2 text-warning"></span></div>
+        <div class="pull-left col-padding col-sm-10">
+            <div batch-action-confirm-message selected-item="viewModel.selectedItems" config="config"
+                 columns="columns"></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-ng-click="doAction()"
+                bo-text=" \'ecs.common.dlg.bt.submit\' | translate"></button>
+        <button class="btn btn-default" data-ng-click="close(false)"
+                bo-text=" \'ecs.common.dlg.bt.cancel\' | translate"></button>
+    </div>
+</div>

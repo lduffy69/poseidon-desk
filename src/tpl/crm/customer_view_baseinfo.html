@@ -1,0 +1,43 @@
+<div class="panel panel-default panel-portlet">
+    <div class="panel-portlet-tool">
+        <ul class="nav">
+            <li class="nav-item inline">
+                <a customer-create edit-mode="true" item="cust"><i
+                        class="fa fa-edit"></i></a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="panel-heading">
+        基本信息
+    </div>
+    <div class="list-group no-radius alt">
+        <div class="clearfix list-group-item">
+            <a href="" class="pull-left thumb-md avatar b-3x m-r">
+                <img src="img/a2.jpg" alt="...">
+            </a>
+
+            <div class="clear">
+                <div class="h3 m-t-xs m-b-xs">
+                    <span ng-bind="cust.custName"/>
+                </div>
+                <small class="text-muted" ng-bind="cust.custNo"></small>
+            </div>
+        </div>
+        <a class="list-group-item" href="">
+            <span class="badge bg-light" ng-bind="cust.enterpriseName"></span>
+            <i class="fa fa-comment fa-fw text-muted"></i>
+            企业名称
+        </a>
+        <a class="list-group-item" href="">
+            <span class="badge bg-light" ng-bind="cust.concatAddr"></span>
+            <i class="fa fa-envelope fa-fw text-muted"></i>
+            联系地址
+        </a>
+        <a class="list-group-item" href="">
+            <span class="badge bg-light" ng-bind="cust.legalPerson"></span>
+            <i class="fa fa-eye fa-fw text-muted"></i>
+            法人代表
+        </a>
+    </div>
+</div>

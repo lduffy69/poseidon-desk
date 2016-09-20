@@ -1,0 +1,17 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;">
+    <!-- column -->
+    <div class="col w-lg lt b-r">
+        <div ui-view="list" class="vbox"/>
+    </div>
+    <!-- /column -->
+    <div class="col r bg-light item hbox">
+        <div ui-view class="fade-in-up"/>
+    </div>
+</div>
+<!-- /hbox layout -->

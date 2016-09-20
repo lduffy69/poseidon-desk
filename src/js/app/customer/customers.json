@@ -1,0 +1,82 @@
+{
+  "successful": true,
+  "resultValue": {
+    "items": [
+      {
+        "custId": 1,
+        "registeredAddr": "1",
+        "custNo": "1",
+        "channelId": 1,
+        "enterpriseName": "1",
+        "enterpriseNature": "1",
+        "legalPerson": "1",
+        "beginBusiTime": "2016-08-24",
+        "taxNo": "1",
+        "concatAddr": "1",
+        "endBusiTime": "2016-08-24",
+        "escNo": "1",
+        "manageId": 1,
+        "custName": "张三",
+        "custStatus": "1",
+        "custType": "1"
+      },
+       {
+        "custId": 2,
+        "registeredAddr": "1",
+        "custNo": "2",
+        "channelId": 1,
+        "enterpriseName": "1",
+        "enterpriseNature": "1",
+        "legalPerson": "1",
+        "beginBusiTime": "2016-08-24",
+        "taxNo": "1",
+        "concatAddr": "1",
+        "endBusiTime": "2016-08-24",
+        "escNo": "1",
+        "manageId": 1,
+        "custName": "李四",
+        "custStatus": "1",
+        "custType": "1"
+      },
+      {
+        "custId": 3,
+        "registeredAddr": "1",
+        "custNo": "3",
+        "channelId": 1,
+        "enterpriseName": "1",
+        "enterpriseNature": "1",
+        "legalPerson": "1",
+        "beginBusiTime": "2016-08-24",
+        "taxNo": "1",
+        "concatAddr": "1",
+        "endBusiTime": "2016-08-24",
+        "escNo": "1",
+        "manageId": 1,
+        "custName": "王五",
+        "custStatus": "1",
+        "custType": "1"
+      },
+      {
+        "custId": 4,
+        "registeredAddr": "1",
+        "custNo": "4",
+        "channelId": 1,
+        "enterpriseName": "1",
+        "enterpriseNature": "1",
+        "legalPerson": "1",
+        "beginBusiTime": "2016-08-24",
+        "taxNo": "1",
+        "concatAddr": "1",
+        "endBusiTime": "2016-08-24",
+        "escNo": "1",
+        "manageId": 1,
+        "custName": "马六",
+        "custStatus": "1",
+        "custType": "1"
+      }
+    ],
+    "itemCount": 0,
+    "dicts": []
+  },
+  "resultHint": ""
+}

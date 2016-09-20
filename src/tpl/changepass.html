@@ -1,0 +1,31 @@
+<div class="container w-xxl w-auto-xs" ng-controller="ChangePassFormController"
+     ng-init="app.settings.container = false;">
+    <div class="m-t-xxl">
+        <!-- toaster directive -->
+        <toaster-container
+                toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <!-- / toaster directive -->
+        <form name="form" class="form-validation">
+            <div class="list-group list-group-sm">
+                <div class="list-group-item">
+                    <input type="password" name="oldPwd" placeholder="原始密码" class="form-control no-border"
+                           ng-model="oldPwd" required>
+                </div>
+                <div class="list-group-item">
+                    <input type="password" name="newPwd" placeholder="新密码" class="form-control no-border"
+                           ng-model="newPwd" required>
+                </div>
+                <div class="list-group-item">
+                    <input type="password" name="confirmPwd" placeholder="确认新密码" class="form-control no-border"
+                           ng-model="confirmPwd" required ui-validate=" '$value==newPwd' "
+                           ui-validate-watch=" 'newPwd' ">
+                </div>
+                <div ng-show='form.confirmPwd.$error.validator' class="text-danger wrapper text-center">两次输入密码不一致!</div>
+            </div>
+            <button type="submit" class="btn btn-info btn-block"
+                    ng-click="change()"
+                    ng-disabled='form.$invalid'>确定
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<!-- list -->
+<ul class="nav">
+    <!--业务菜单-->
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span class="font-bold" translate="aside.nav.ESP"></span>
+    </li>
+    <li ng-repeat="row in tree_rows">
+        <a href class="auto">
+      <span class="pull-right text-muted"> <i class="fa fa-fw fa-angle-right text"></i> <i
+              class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i ng-class="row.icon"></i>
+            <span ng-bind="row.label" class="font-bold"></span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span ng-bind="row.label"></span>
+                </a>
+            </li>
+            <li ng-repeat="child in row.children">
+                <a ng-href="{{child.href}}">
+                    <span ng-bind="child.label"></span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<!-- / list -->

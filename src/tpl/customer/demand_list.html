@@ -1,0 +1,54 @@
+<div class="tl-wrap" ng-init="show_demand=false;" ng-class="{'b-success':demands.length>0}">
+    <div class="tl-date">
+        <a ng-click="show_demand=!show_demand">配网用户信息</a>
+    </div>
+    <div>
+        <div class="tl-content panel padder b-a block animated"
+             ng-class="{'fadeInDown':show_demand,'fadeOutUp':!show_demand}">
+            <span class="arrow left pull-up hidden-left"></span>
+            <span class="arrow right pull-up visible-left"></span>
+            <div class="panel-heading">
+                <h5 class="panel-title">维护用户用电信息</h5>
+            </div>
+            <div class="panel-body pull-in b-t b-light">
+                <div class="hbox hbox-auto-xs hbox-auto-sm">
+                    <div class="col">
+                        <div class="wrapper-md">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="list-group list-group-lg list-group-sp">
+                                        <a herf class="list-group-item clearfix" ng-repeat="demand in demands">
+                                              <span class="pull-left thumb-sm avatar m-r">
+                                                <img src="img/a4.jpg" alt="...">
+                                                <i class="on b-white right"></i>
+                                              </span>
+                                            <span class="clear">
+                                            <span ng-bind="demand.consNo"></span>
+                                                 <span class="pull-right">
+                                                     <button ng-click="edit(demand.consId)"
+                                                             class="btn btn-rounded btn-sm btn-icon btn-default"><i
+                                                             class="fa fa-edit text-info"></i></button>
+                                                     <button ng-click="delete(demand.consId)"
+                                                             class="btn btn-rounded btn-sm btn-icon btn-default"><i
+                                                             class="fa fa-minus text-danger"></i></button>
+                                                 </span>
+                                                <small class="text-muted clear text-ellipsis">最大负荷:{{demand.maxLoad}}</small>
+                                                <small class="text-muted clear text-ellipsis">最小负荷:{{demand.minLoad}}</small>
+                                                <small class="text-muted clear text-ellipsis">平均负荷:{{demand.averLoad}}</small>
+                                          </span>
+
+                                        </a>
+                                    </div>
+                                    <button class="btn btn-info btn-addon btn-sm pull-right"
+                                            ng-click="add()"><i
+                                            class="fa fa-plus"></i>添加配网用户
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="panel" ng-class="panel.css">
+    <div class="panel-tool" style="position: absolute;right: 5px;">
+        <ul class="nav dropdown" dropdown>
+            <li class="nav-item inline">
+                <a href class="dropdown-toggle nav-link" dropdown-toggle>
+                    <i class="icon-list"></i>
+                </a>
+            </li>
+            <ul class="dropdown-menu dropdown-menu-right animated fadeInDown w">
+                <li>
+                    <a contact-create item="contact">新增</a>
+                </li>
+                <li>
+                    <a contact-create edit-mode="true" item="contact">编辑</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a contact-delete item="contact">删除</a>
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <div class="panel-heading">
+        {{panel.title}}
+    </div>
+    <div class="panel-body">
+        <div class="list-group no-radius alt" ng-if="accounts.length>0">
+            <div class="list-group-item clearfix">
+                <div class="clear">
+                    <div class="h3 m-t-xs m-b-xs">
+                        {{account.accountName}}
+                    </div>
+                    <small class="text-muted">{{account.bankName}}</small>
+                </div>
+            </div>
+            <a class="list-group-item" href="">
+                <span class="badge bg-light" ng-bind="account.accountNo"></span>
+                <i class="fa fa-credit-card fa-fw text-muted"></i>银行卡号
+            </a>
+            <a class="list-group-item" href="">
+                <i class="fa fa-compass fa-fw text-muted"></i>注册地址
+                <span class="badge bg-light" ng-bind="account.registeredAddr"></span>
+            </a>
+            <a class="list-group-item" href="">
+                <span class="badge bg-light" ng-bind="account.taxNo"></span>
+                <i class="fa fa-compass fa-fw text-muted"></i>客户税号
+            </a>
+            <a class="list-group-item" href="">
+                <span class="badge bg-light" ng-bind="account.concatTel"></span>
+                <i class="fa fa-mobile fa-fw text-muted"></i>联系电话
+            </a>
+        </div>
+    </div>
+
+    <div class="panel-footer" ng-if="accounts.length>0">
+        <div class="m-b m-t-lg">
+            <a ng-repeat="account in accounts"
+               ng-click="view(account)" class="avatar thumb-xs m-r-xs"
+               href=""> <img src="img/a1.jpg">
+            </a>
+        </div>
+    </div>
+</div>

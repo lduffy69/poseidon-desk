@@ -1,0 +1,18 @@
+<div class="wrapper-md">
+    <!--<div class="row">-->
+    <!--<div ui-view="header"/>-->
+    <!--</div>-->
+    <div class="row">
+        <div class="col-sm-6 connected" ui-jq="sortable"
+             ui-options="{items:'.portlet', handle:'.panel-heading', connectWith:'.connected'}">
+            <div ui-view="base" class="portlet"/>
+            <div ui-view="demand" class="portlet"/>
+        </div>
+        <div class="col-sm-6 connected" ui-jq="sortable"
+             ui-options="{items:'.portlet', handle:'.panel-heading', connectWith:'.connected'}">
+            <div ui-view="contact" class="portlet"/>
+            <div ui-view="credentials" class="portlet"/>
+            <div ui-view="account" class="portlet"/>
+        </div>
+    </div>
+</div>

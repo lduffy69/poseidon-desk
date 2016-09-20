@@ -1,0 +1,36 @@
+<div class="bg-light lter b-b wrapper-sm">
+    <a ui-sref="app.customer.list"
+       class="btn btn-sm btn-info pull-right"
+       href="#/customer/list">
+        <i class="icon-goback"></i>返回客户列表</a>
+    <h4 class="m-n font-thin h3">完善客户信息</h4>
+</div>
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+    <div class="col">
+        <div class="wrapper">
+            <ul class="timeline">
+                <li class="tl-header">
+                    <h4><span class="label bg-info">客户档案</span></h4>
+                </li>
+                <li class="tl-item">
+                    <div ui-view="basic" class="fade-in-down"></div>
+                </li>
+                <li class="tl-item">
+                    <div ui-view="contact" class="fade-in-down"></div>
+                </li>
+                <li class="tl-item">
+                    <div ui-view="account" class="fade-in-down"></div>
+                </li>
+                <li class="tl-item">
+                    <div ui-view="demand" class="fade-in-down"></div>
+                </li>
+                <li class="tl-item">
+                    <div ui-view="credentials" class="fade-in-down"></div>
+                </li>
+                <li class="tl-header">
+                    <h4><span class="label bg-light rounded">完成</span></h4>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

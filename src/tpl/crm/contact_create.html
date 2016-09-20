@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" data-ng-click="close(false)"
+            aria-hidden="true">&times;</button>
+    <h5 class="modal-title" ng-bind="dlgTitle"></h5></div>
+</div>
+<div class="modal-body b-t b-light">
+    <form name="form" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span class="text-danger">*</span>联系人</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="联系人" name="contName" ng-model="contact.contName">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <span class="text-danger">*</span>
+                联系类型</label>
+            <div class="col-sm-9">
+                <select name="contType" ng-model="contact.contType" class="form-control m-b"
+                        ng-options="option.codeValue as option.codeName for option in contTypeOptions">
+                    <option value="">-- 请选择 --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                办公电话</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="办公电话" name="contact.officeTel"
+                       ng-model="contact.officeTel">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                移动电话</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="移动电话" name="contact.mobile"
+                       ng-model="contact.mobile">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">传真号码</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="传真号码" name="contact.faxNo"
+                       ng-model="contact.faxNo">
+                <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">联系地址</label>
+            <div class="col-sm-9">
+                                            <textarea class="form-control" rows="3"
+                                                      placeholder="" name="contAddr"
+                                                      ng-model="contact.contAddr"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-info" ng-disabled="form.$invalid" ng-click="doAction()">确定
+    </button>
+    <button class="btn btn-default" data-ng-click="close(false)">取消</button>
+</div>

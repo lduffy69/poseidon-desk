@@ -1,0 +1,56 @@
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;">
+
+    <!-- column -->
+    <div class=" col w-lg lter b-r">
+        <div class="vbox">
+            <div class="wrapper-xs b-b">
+                <div class="input-group m-b-xxs">
+                    <span class="input-group-addon input-sm no-border no-bg"><i
+                            class="icon-magnifier text-md m-t-xxs"></i></span>
+                    <input type="text" class="form-control input-sm no-border no-bg text-md"
+                           placeholder="查询所有客户" ng-model="query">
+                </div>
+            </div>
+            <div class="row-row">
+                <div class="cell scrollable hover">
+                    <div class="cell-inner">
+                        <div class="m-t-n-xxs">
+                            <div class="list-group list-group-lg no-radius no-border no-bg m-b-none">
+                                <a ng-repeat="item in items | filter:query | orderBy:'first'"
+                                   class="list-group-item m-l" ng-class="{'select m-l-none': item.selected }"
+                                   ui-sref="app.customer.edit({ custId: item.custId })" ng-click='selectItem(item)'>
+                  <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': item.selected }">
+                                  {{ item.custName }}
+                    <span ng-hide="item.custName">No Name</span>
+                  </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text-center pos-abt w-full" style="top:50%;"
+                             ng-hide="(items | filter:query).length">No Contacts
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper b-t text-center">
+                <a href="#/customer/add" ui-sref="customer.add" class="btn btn-sm btn-info btn-addon"
+                   ng-click="createCust()"><i
+                        class="fa fa-plus fa-fw m-r-xs"></i> 新增客户</a>
+            </div>
+        </div>
+    </div>
+    <!-- /column -->
+
+    <!-- column -->
+    <div class="col bg-white-only" ui-view>
+
+    </div>
+    <!-- /column -->
+</div>
+<!-- /hbox layout -->

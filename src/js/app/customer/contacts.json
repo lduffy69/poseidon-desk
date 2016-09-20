@@ -1,0 +1,26 @@
+{
+  "successful": true,
+  "resultValue": {
+    "items": [
+      {
+        "custId": 2,
+        "remark": "水水水水",
+        "postCode": "20068",
+        "officeTel": "12345456",
+        "webchart": "SaaS",
+        "contName": "张小凡",
+        "email": "longshi@longshine.com",
+        "faxNo": "123123123",
+        "qq": "123124124",
+        "contId": 1,
+        "contType": "02",
+        "homeTel": "123123",
+        "mobile": "123123",
+        "contAddr": "文三路东部软件园"
+      }
+    ],
+    "itemCount": 0,
+    "dicts": []
+  },
+  "resultHint": ""
+}

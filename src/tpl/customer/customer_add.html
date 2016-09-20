@@ -1,0 +1,96 @@
+<div class="bg-light lter b-b wrapper-md">
+    <a ui-sref="customer.dashboard"
+       class="btn btn-sm btn-info pull-right"
+       href="#/customer/dashboard">
+        <i class="icon-goback"></i>返回客户列表</a>
+    <h3 class="m-n font-thin h3">新增客户信息</h3>
+</div>
+<div class="wrapper-md center-block">
+    <div class="panel">
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">用户名称</label>
+                    <div class="col-lg-4">
+                        <input type="text" class="form-control" placeholder="用户名称" name="custName"
+                               ng-model="cust.custName">
+                        <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">企业名称</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" placeholder="企业名称" name="enterpriseName"
+                               ng-model="cust.enterpriseName">
+                        <!--<span class="help-block m-b-none">Example block-level help text here.</span>-->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">企业性质</label>
+                    <div class="col-lg-4">
+                        <select name="enterpriseNature" ng-model="cust.enterpriseNature" class="form-control m-b"
+                                ng-options="option.codeValue as option.codeName for option in enterpriseNatureOptions">
+                            <option value="">-- 请选择 --</option>
+                        </select>
+                    </div>
+                    <label class="col-lg-2 control-label">法人代表</label>
+                    <div class="col-lg-4">
+                        <input type="text" class="form-control" placeholder="法人代表" name="legalPerson"
+                               ng-model="cust.legalPerson">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">企业注册地址</label>
+                    <div class="col-lg-10">
+                                            <textarea class="form-control" rows="3"
+                                                      placeholder="企业注册地址" name="registeredAddr"
+                                                      ng-model="cust.registeredAddr"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">联系地址</label>
+                    <div class="col-lg-10">
+                                            <textarea class="form-control" rows="3"
+                                                      placeholder="联系地址" name="concatAddr"
+                                                      ng-model="cust.concatAddr"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">营业期限</label>
+                    <div class="col-lg-4">
+                        <div class="input-group w-md">
+                            <input type="text" class="form-control"
+                                   datepicker-popup="yyyy-MM-dd"
+                                   ng-model="cust.beginBusiTime" is-open="picker.fromOpened"
+                                   datepicker-options="dateOptions" close-text="Close"/>
+                            <span class="input-group-btn">
+                                                    <a class="btn btn-default"
+                                                       ng-click="open($event);picker.fromOpened=true;picker.toOpened=false">
+                                                        <i class="glyphicon glyphicon-calendar"></i></a>
+                                                    </span>
+                        </div>
+                    </div>
+                    <label class="col-lg-2 control-label">至</label>
+                    <div class="col-lg-4">
+                        <div class="input-group w-md">
+                            <input type="text" class="form-control"
+                                   datepicker-popup="yyyy-MM-dd"
+                                   ng-model="cust.endBusiTime" is-open="picker.toOpened"
+                                   datepicker-options="dateOptions"/>
+                            <span class="input-group-btn">
+                                                    <a class="btn btn-default"
+                                                       ng-click="open($event);picker.toOpened=true;picker.fromOpened=false">
+                                                        <i class="glyphicon glyphicon-calendar"></i></a>
+                                                    </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer" style="text-align: right">
+            <button class="btn btn-sm btn-info" ng-click="save()">保存
+            </button>
+        </div>
+    </div>
+</div>
