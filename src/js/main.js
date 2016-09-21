@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('app')
-    .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'poseidonRequest',
-        function ($scope, $translate, $localStorage, $window, poseidonRequest) {
+    .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'poseidonRequest', 'commonTopicService', 'commonDialog', 'lsespCons',
+        function ($scope, $translate, $localStorage, $window, poseidonRequest, commonTopicService, commonDialog, lsespCons) {
             // add 'ie' classes to html
             var isIE = !!navigator.userAgent.match(/MSIE/i);
             isIE && angular.element($window.document.body).addClass('ie');
@@ -49,15 +49,46 @@ angular.module('app')
                 $scope.lang.isopen = !$scope.lang.isopen;
             };
 
+            ////
+            function errorHandler(e) {
+                function c(t, n) {
+                    t && t.resolve({
+                        buttonResult: n,
+                        messageOptions: e
+                    }), l = null
+                }
+
+                var msg = e, i, s;
+                angular.isObject(e) && (msg = e.message, msg == undefined && (e.data && e.data.message ? msg = e.data.message : msg = defaultMsg), i = e.modalResultDeferred, s = e.iconClass);
+                var conf = [{
+                    result: true,
+                    label: '确定',
+                    cssClass: "btn btn-info"
+                }
+                ], modalInstance = commonDialog.showMessageDialogSimple("错误", msg, conf, e);
+                return modalInstance.result.then(function (e) {
+                    c(i, e)
+                }, function (e) {
+                    c(i, e)
+                }), l
+            }
+
+            var defaultMsg = "系统繁忙,请稍后再试";
+            var l;
+            commonTopicService.subscribe(lsespCons.SHOW_RESPONSE_ERROR_MESSAGE, function (e, args) {
+                l != null && (l.close(false), l = null), angular.isString(args) && (args = {
+                    message: args
+                }), args.iconClass = "fa fa-times-circle", errorHandler(args)
+            })
+
+
+            ////
+
+
             //userinfo
             poseidonRequest.getUserInfo().then(function (resp) {
                     $scope.userinfo = resp.data.resultValue;
                 }
-                // , function (resp, status, headers, config) {
-                //     if (resp.status == '401' || resp.status == 401) {
-                //         window.location.href = 'http://172.19.18.90:8080/platform-server/pt_login/login';
-                //     }
-                // }
             );
             //sysinfo
             var logoutUrl, theme;
