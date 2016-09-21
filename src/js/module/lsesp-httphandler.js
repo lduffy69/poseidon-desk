@@ -10,10 +10,11 @@ var n = {
     RESPONSE_CODE: {
         SUCCESS: "200",
         SESSION_TIMEOUT: "-99",
-        NEED_LOGIN: "-100",
+        NEED_LOGIN: "401",
         HTTP_SUCCESS: 200
     },
     ALIYUN_CONSOLE_SESSION_TIMEOUT: "lsespConsoleSessionTimeout",
+    LSESP_NEED_LOGIN: "lsespNeedLogin",
     SUFFIX: t
 }
 var i = {
@@ -27,7 +28,7 @@ var i = {
 }, o = n.RESPONSE_CODE, u = n.SHOW_RESPONSE_ERROR_MESSAGE, a = n.ALIYUN_CONSOLE_SESSION_TIMEOUT;
 
 
-angular.module("common.services.lsespHttpHandler", [])
+angular.module("common.services.lsespHttpHandler", ["common.cons.lsespCons", "common.topic.service"])
     .constant("lsespConsoleConf", {
         linkHandler: function (url, e) {
             var rest = url.replace(/\{.*?\}/g, function (word) {
@@ -37,6 +38,7 @@ angular.module("common.services.lsespHttpHandler", [])
             return rest;
         },
         httpOptionInterceptor: function (e) {
+            console.log("no data to post");
             return e
         },
         httpOptionWrapper: function (e) {
@@ -46,10 +48,10 @@ angular.module("common.services.lsespHttpHandler", [])
             return e
         },
         responseSuccessCode: o.SUCCESS,
-        enableSessionTimeout: !0,
+        enableSessionTimeout: true,
         sessionTimeoutCode: o.SESSION_TIMEOUT,
         sessionTimeoutLink: "",
-        sessionTimeoutNeedCallbackFunc: !0,
+        sessionTimeoutNeedCallbackFunc: true,
         labels: {
             SESSION_TIMEOUT1: s.timeoutTipPrefix,
             SESSION_TIMEOUT2: s.timeoutTipSufix,
@@ -79,39 +81,43 @@ angular.module("common.services.lsespHttpHandler", [])
         e.onlyUniqueMessages(true), e.globalTimeToLive(3e3), e.globalEnableHtml(true)
     }
     ])
-    .factory("lsesp.console.request", ["lsesp.console.requestWrapper", "growl", "$q", "lsespConsoleSetting", function (e, t, n, i) {
-        function s(s, a) {
-            a = a || {};
-            var s = i.linkHandler(s, a);
-            if (a && a.method) {
-                var f = a.method.toUpperCase();
-                f == "POST" && (a.data == undefined && (a.data = {}), i.httpOptionInterceptor(a))
+    .factory("lsesp.console.request", ["lsesp.console.requestWrapper", "growl", "$q", "lsespConsoleSetting", "lsespCons", "commonTopicService", function (requestWrapper, growl, $q, i, lsespCons, commonTopicService) {
+        var showResErrMsg = lsespCons.SHOW_RESPONSE_ERROR_MESSAGE;
+        var resCode = lsespCons.RESPONSE_CODE;
+
+        function request(url, options) {
+            options = options || {};
+            url = i.linkHandler(url, options);
+            if (options && options.method) {
+                var f = options.method.toUpperCase();
+                f == "POST" && (options.data == undefined && (options.data = {}), i.httpOptionInterceptor(options))
             } else
-                a.method = "GET";
-            return a && a.submitMessage && t.addSuccessMessage(a.submitMessage), i.httpOptionWrapper(a),
-                e.sendRequestWithUrl(s, a).then(
+                options.method = "GET";
+            return options && options.submitMessage && growl.addSuccessMessage(options.submitMessage), i.httpOptionWrapper(options),
+                requestWrapper.sendRequestWithUrl(url, options).then(
                     function (e) {
                         var r = e.config;
-                        return r && e.status == o.SUCCESS && r.successMessage != undefined && t.addSuccessMessage(r.successMessage), e
+                        return r && e.status == o.SUCCESS && r.successMessage != undefined && growl.addSuccessMessage(r.successMessage), e
                     },
                     function (e) {
-                        return a && a.ignoreErrorHandler && a.ignoreErrorHandler == 1 ? n.reject(e) : (console.log(e), e.status !== o.HTTP_SUCCESS , n.reject(e))
+                        return options && options.ignoreErrorHandler && options.ignoreErrorHandler == true ? $q.reject(e) : ( e.status !== resCode.HTTP_SUCCESS && commonTopicService.publish(showResErrMsg, e.data) , $q.reject(e))
                     })
         }
 
         return {
-            request: s
+            request: request
         }
     }
     ])
-    .factory("lsespConsoleHttpInterceptor", ["$q", "$rootScope", "lsespConsoleSetting", "$injector", function (e, t, n, r) {
+    .factory("lsespConsoleHttpInterceptor", ["$q", "$rootScope", "lsespConsoleSetting", "$injector", function ($q, $rootScope, n, r) {
         return {
             response: function (i) {
                 var s = i.data;
-                return n.enableSessionTimeout && s.code == n.sessionTimeoutCode ? (t.$emit(a, i), e.reject(i)) : n.httpResponseInterceptor(i, r) === !1 ? e.reject(i) : i || e.when(i)
+                return n.enableSessionTimeout && s.code == n.sessionTimeoutCode ? ($rootScope.$emit(a, i), $q.reject(i)) : n.httpResponseInterceptor(i, r) === !1 ? $q.reject(i) : i || $q.when(i)
             },
-            responseError: function (t) {
-                return e.reject(t)
+            responseError: function (e) {
+                // return e.status == o.NEED_LOGIN ? ($rootScope.$emit(n.LSESP_NEED_LOGIN, e), $q.reject(e)) : $q.reject(e)
+                return $q.reject(e);
             }
         }
     }
@@ -119,14 +125,21 @@ angular.module("common.services.lsespHttpHandler", [])
     .run(["$rootScope", "lsespConsoleSetting", function (e, n) {
         var r = n.labels;
         e.gConfig == undefined && (e.gConfig = {
-            sessionTimeout: !1
-        }), e.$on(a, function (i, s) {
+            sessionTimeout: true
+        });
+
+        // e.$on(n.LSESP_NEED_LOGIN, function (i, s) {
+        //
+        // });
+
+        //超时监听
+        e.$on(a, function (i, s) {
             var o;
             n.sessionTimeoutNeedCallbackFunc ? o = n.sessionTimeoutLink + "?oauth_callback=" + encodeURIComponent(location.href) : o = n.sessionTimeoutLink + encodeURIComponent(location.href);
             var a = r.SESSION_TIMEOUT1 + "<a href=" + o + ">" + r.SESSION_TIMEOUT2 + "</a>。";
             e.gConfig.sessionTimeout == 0 && (e.gConfig.sessionTimeout = !0, setTimeout(function () {
 
             }, 0))
-        })
+        });
     }
     ])

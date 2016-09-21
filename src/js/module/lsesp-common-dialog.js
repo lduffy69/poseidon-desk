@@ -67,7 +67,7 @@ angular.module('lsesp.common.dialog', [])
             t = t || e.callback, r = r || e.passedObject;
             var a = e.buttons || u, f = function (r) {
                 r.title = e.title, r.message = e.message, r.buttons = a, r.eventHandler = function (e) {
-                    if (n.isFunction(e)) {
+                    if (angular.isFunction(e)) {
                         e(r);
                         return
                     }
